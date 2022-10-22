@@ -7,6 +7,9 @@ class Commit(models.Model):
     description = models.TextField(default='', verbose_name='Комментарий')
     new = models.ForeignKey('New', on_delete=models.CASCADE, verbose_name='Новость')
 
+    def __str__(self):
+        return f'Комментарий от {self.user_name} к {self.new}'
+
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'

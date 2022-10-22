@@ -6,6 +6,18 @@
         {% for new in news %}
             <h3>{{new.title}}</h3>
             <p>{{new.description}}</p>
+            <p>создана: {{ new.time_create }}</p>
+            <p>Коментариев:{{new.cnt_commit}}</p>
+            {% if new.cnt_commit > 0 %}
+            <ul>
+                {% for com in new.get_commit%}
+                <li>
+                    <p>пользователь: {{com.user_name}}</p>
+                    <p>{{com.description}}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         {% endfor %}
     {% else %}
         <p>В данный момент новостная лента пустая</p>
