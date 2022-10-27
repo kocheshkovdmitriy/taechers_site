@@ -11,6 +11,10 @@ class Task(models.Model):
             num=self.pk
         )
 
+    class Meta:
+        verbose_name = 'Задание'
+        verbose_name_plural = 'Задания'
+
 
 class Test(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тема теста')
@@ -22,9 +26,17 @@ class Test(models.Model):
             cnt_task=len(self.tasks_list.all())
         )
 
+    class Meta:
+        verbose_name = 'Тест'
+        verbose_name_plural = 'Тесты'
+
 
 class Section(models.Model):
     title = models.CharField(max_length=200, verbose_name='Раздел')
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Раздел'
+        verbose_name_plural = 'Разделы'

@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h2>{{object.title}}</h2>
+    <p>{{object.description}}</p>
+    <p>Создана: {{object.time_create}} Изменена: {{object.time_update}}</p>
+
+    {% if request.user.is_superuser %}
+        <a href="/news/{{object.pk}}/edit/">Редактировать новость</a>
+    {% endif %}
+
+    <h3>Коментариев: {{object.cnt_commit}}</h3>
+    <ol>
+        {% for commit in object.get_commit%}
+        <li>
+            {% if commit.user %}
+                <h4><a href="{% url 'profile' commit.user.pk %}">{{ commit.user_name }}</a></h4>
+            {% else %}
+                <h4>{{ commit.user_name }}</a></h4>
+            {% endif %}
+            <p>{{commit.description}}</p>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <a href="/news/{{object.pk}}/create_commit/">Добавить коментарий</a>
+{% endblock %}

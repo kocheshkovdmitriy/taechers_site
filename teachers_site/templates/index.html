@@ -7,12 +7,17 @@
 <body>
     {%block header%}
         <h3>Главное меню и авторизация</h3>
+        {% if request.user.is_authenticated %}
+            <p> Добро пожаловать <a href="{% url 'profile' request.user.pk %}">{{ request.user.first_name }}</a>  | <a href="{% url 'logout' %}">выйти</a></p>
+        {% else %}
+            <p>войдите на сайт <a href="{% url 'register' %}">зарегистрироваться</a> | <a href="{% url 'login' %}">войти</a> </p>
+        {% endif %}
     {%endblock%}
-
+    <hr>
     {%block content%}
         <h2> Тут должно быть содержание страницы </h2>
     {%endblock%}
-
+    <hr>
     {%block footer%}
         <h3> Тут будет контактная информация </h3>
     {%endblock%}

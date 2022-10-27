@@ -7,6 +7,8 @@ class SectionAdmin(admin.ModelAdmin):
     def get_cnt_task(self, object):
         return len(object.tasks.all())
 
+    get_cnt_task.short_description = 'Количество заданий'
+
 class TaskAdmin(admin.ModelAdmin):
     list_display = ['pk', 'section', 'get_task']
 
@@ -15,7 +17,17 @@ class TaskAdmin(admin.ModelAdmin):
             return object.task[:17] + '...'
         return object.task
 
+    get_task.short_description = 'Условие'
+
+class TestAdmin(admin.ModelAdmin):
+    list_display = ['title', 'get_number_of_questions']
+
+    def get_number_of_questions(self, object):
+        return len(object.tasks_list.all())
+
+    get_number_of_questions.short_description = 'Количество заданий в тесте'
 
 
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Task, TaskAdmin)
+admin.site.register(Test, TestAdmin)

@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h2> Профиль пользователя  </h2>
+    <p>{{ profile.user.first_name }}</p>
+    <p>{{ profile.user.last_name }}</p>
+    <p>{{ profile.city }}</p>
+    <p>{{ profile.school }}, {{ profile.grade }} класс</p>
+    {% if profile.user == request.user %}
+        <ol>
+            {% for tests in profile.tests.all %}
+                <li>
+                    {{tests}}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+
+{% endblock %}

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Commit(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.PROTECT, verbose_name='Автор')
-    user_name = models.CharField(max_length=20, blank=True, verbose_name='Имя автора')
+    user_name = models.CharField(max_length=20, blank=True, default='Аноним', verbose_name='Имя автора')
     description = models.TextField(default='', verbose_name='Комментарий')
     new = models.ForeignKey('New', on_delete=models.CASCADE, verbose_name='Новость')
 

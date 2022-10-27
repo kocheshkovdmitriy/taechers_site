@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h3>Добавление комментария:</h3>
+    <form method="post" action="/news/{{pk}}/create_commit/">
+        {% csrf_token %}
+        {{commit_form.as_p}}
+        <button type="submit">Сохранить коментарий</button>
+    </form>
+{% endblock %}

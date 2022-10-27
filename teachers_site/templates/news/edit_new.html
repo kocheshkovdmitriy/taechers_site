@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <form method="post" action="/news/{{pk}}/edit/">
+        {% csrf_token %}
+        {{new_form.as_p}}
+        <button type="submit">Сохранить новость</button>
+    </form>
+{% endblock %}
