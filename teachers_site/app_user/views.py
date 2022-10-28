@@ -36,7 +36,6 @@ class LoginView(View):
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
-        print(form.data)
         if form.is_valid():
             user = form.save()
             slug = form.cleaned_data.get('slug')
@@ -61,7 +60,6 @@ def register_view(request):
 def profile(request, user_pk):
     user = get_object_or_404(User, pk=user_pk)
     profile = get_object_or_404(Profile, user=user)
-    print(profile)
     context = {
         'profile': profile
     }

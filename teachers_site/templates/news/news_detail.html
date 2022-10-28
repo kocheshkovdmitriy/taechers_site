@@ -6,7 +6,7 @@
     <p>Создана: {{object.time_create}} Изменена: {{object.time_update}}</p>
 
     {% if request.user.is_superuser %}
-        <a href="/news/{{object.pk}}/edit/">Редактировать новость</a>
+        <a href="{% url 'edit_new' object.pk %}">Редактировать новость</a>
     {% endif %}
 
     <h3>Коментариев: {{object.cnt_commit}}</h3>
@@ -23,5 +23,5 @@
         {% endfor %}
     </ol>
 
-    <a href="/news/{{object.pk}}/create_commit/">Добавить коментарий</a>
+    <a href="{% url 'create_commit' object.pk %}">Добавить коментарий</a>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
     <h3>Добавление комментария:</h3>
-    <form method="post" action="/news/{{pk}}/create_commit/">
+    <form method="post" action="{% url 'create_commit' pk %}">
         {% csrf_token %}
         {{commit_form.as_p}}
         <button type="submit">Сохранить коментарий</button>
